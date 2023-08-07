@@ -11,17 +11,18 @@ This is a browser extension for [Schoolism](https://schoolism.com) users. It add
 
 This is a WIP. I'll add usage instructions here when I have a working version.
 
-# Instructions for Developers:
+## Instructions for Developers
 
-## Installation
+### Installation
 
-```
+```bash
 npm i
 ```
 
-## Building the Extension
+### Building the Extension
 
-### Firefox
+#### Firefox
+
 `npm run build` builds the extension by default for Firefox.
 
 The generated files are in `dist/`.
@@ -32,16 +33,17 @@ Firefox > Preferences > Extensions & Themes > Debug Add-ons > Load Temporary Add
 
 Here locate the `dist/` directory and open `manifest.json`
 
-### Chrome
+#### Chrome
+
 `npm run build:chrome` builds the extensions for Google Chrome.
 
 The generated files are in `dist/`.
 To load the extensions in Google Chrome go to `chrome://extensions/` and click `Load unpacked`. Locate the dist directory and select `manifest.json`.
 
-## Files
+### Files
 
- - content-script - UI files
- - background.ts - Background script/Service worker
- - index.html - popup UI
+- content-script - UI files
+- background.ts - Background script/Service worker
+- index.html - popup UI
 
 Originally based on the [browser extension template](https://github.com/akoskm/vite-react-tailwindcss-browser-extension) by [Akos Kemives](https://github.com/akoskm)
