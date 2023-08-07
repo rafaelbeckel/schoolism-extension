@@ -44,4 +44,4 @@ To load the extensions in Google Chrome go to `chrome://extensions/` and click `
  - background.ts - Background script/Service worker
  - index.html - popup UI
 
-If you have any questions feel free to open an issue.
+Originally based on the [browser extension template](https://github.com/akoskm/vite-react-tailwindcss-browser-extension) by [Akos Kemives](https://github.com/akoskm)
