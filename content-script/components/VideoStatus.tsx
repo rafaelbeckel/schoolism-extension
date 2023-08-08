@@ -11,7 +11,7 @@ const VideoStatus: React.FC<VideoStatusProps> = ({ video }) => {
   else if (video.status === "in-progress") color = "yellow";
 
   return (
-    <span
+    <div
       style={{
         backgroundColor: color,
         width: "10px",
@@ -22,7 +22,7 @@ const VideoStatus: React.FC<VideoStatusProps> = ({ video }) => {
       }}
     >
       {video.favorite && <>⭐</>}
-    </span>
+    </div>
   );
 };
 export default VideoStatus;

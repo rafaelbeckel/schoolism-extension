@@ -40,11 +40,14 @@ interface CourseStatusProps {
   courseId: string;
 }
 
-const CourseStatus: React.FC<CourseStatusProps> = ({ courseId }) => {
+const StatusContainer: React.FC<CourseStatusProps> = ({ courseId }) => {
   const [videos, setVideos] = useState(new Array<VideoData>());
+
+  console.log("status of courseId", courseId);
 
   useEffect(() => {
     const videos = getVideosForCourse(courseId) ?? [];
+    console.log(`videos for course ${courseId}`, videos);
 
     setVideos(videos);
   }, []);
@@ -59,4 +62,4 @@ const CourseStatus: React.FC<CourseStatusProps> = ({ courseId }) => {
     </>
   );
 };
-export default CourseStatus;
+export default StatusContainer;

@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import StatusContainer from "./CourseStatus";
+import StatusContainer from "./StatusContainer";
 import "./index.css";
 
 const currentURL = window.location.href;
-document.addEventListener("DOMContentLoaded", onLoad);
 
 // const pluginTagId = "extension-root";
 // const existingInstance = document.getElementById("extension-root");
@@ -27,32 +26,35 @@ function getCourseId(courseDiv: Element) {
   return courseId;
 }
 
-function onLoad() {
-  // We are in a lesson page
-  if (currentURL.includes("schoolism.com/s/course/library/lessons")) {
-    console.log("in lesson page (not implemented yet)");
+// We are in a lesson page
+if (currentURL.includes("schoolism.com/s/course/library/lessons")) {
+  console.log("in lesson page (not implemented yet)");
 
-    // We are in the course catalog
-  } else if (currentURL.includes("schoolism.com/s/course/library")) {
-    console.log("in course catalog");
+  // We are in the course catalog
+} else if (currentURL.includes("schoolism.com/s/course/library")) {
+  console.log("in course catalog");
 
-    const courseDivs = document.querySelectorAll(".course-card");
+  injectCourseStatus();
+}
 
-    console.log("courseDivs", courseDivs);
+function injectCourseStatus() {
+  const courseDivs = document.querySelectorAll(".course-card");
 
-    courseDivs.forEach((courseDiv: Element) => {
-      const courseId = getCourseId(courseDiv) ?? "";
+  console.log("courseDivs", courseDivs);
 
-      const container = document.createElement("div");
-      courseDiv.appendChild(container);
+  courseDivs.forEach((courseDiv: Element) => {
+    const courseId = getCourseId(courseDiv) ?? "";
 
-      ReactDOM.createRoot(container).render(
-        <React.StrictMode>
-          <StatusContainer courseId={courseId} />
-        </React.StrictMode>
-      );
-    });
-  }
+    const container = document.createElement("div");
+    container.id = `course-status-${courseId}`;
+    courseDiv.appendChild(container);
+
+    ReactDOM.createRoot(container).render(
+      <React.StrictMode>
+        <StatusContainer courseId={courseId} />
+      </React.StrictMode>
+    );
+  });
 }
 
 // Check if we're on a page where the main React app should be loaded (e.g., a popup page)
