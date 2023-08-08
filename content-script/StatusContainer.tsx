@@ -7,7 +7,7 @@ import { VideoData } from "./interfaces/video.interface";
 const getVideosForCourse = (courseId: string): Array<VideoData> => {
   if (!courseId) return [];
 
-  return [
+  return new Array<VideoData>(
     {
       id: "1",
       status: "watched",
@@ -16,7 +16,7 @@ const getVideosForCourse = (courseId: string): Array<VideoData> => {
     {
       id: "2",
       status: "in-progress",
-      favorite: true,
+      favorite: false,
     },
     {
       id: "3",
@@ -26,21 +26,23 @@ const getVideosForCourse = (courseId: string): Array<VideoData> => {
     {
       id: "4",
       status: "not-started",
-      favorite: false,
+      favorite: true,
     },
     {
       id: "5",
       status: "not-started",
       favorite: false,
-    },
-  ];
+    }
+  );
 };
 
-interface CourseStatusProps {
+interface StatusContainerProps {
   courseId: string;
 }
 
-const StatusContainer: React.FC<CourseStatusProps> = ({ courseId }) => {
+const StatusContainer: React.FC<StatusContainerProps> = ({
+  courseId,
+}): JSX.Element => {
   const [videos, setVideos] = useState(new Array<VideoData>());
 
   console.log("status of courseId", courseId);
@@ -54,11 +56,9 @@ const StatusContainer: React.FC<CourseStatusProps> = ({ courseId }) => {
 
   return (
     <>
-      {!videos && <span>Course not visited yet</span>}
-      {videos &&
-        videos.map((video: VideoData) => {
-          <VideoStatus video={video} />;
-        })}
+      {videos.map((video: VideoData) => (
+        <VideoStatus video={video} />
+      ))}
     </>
   );
 };

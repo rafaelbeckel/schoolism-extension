@@ -10,6 +10,8 @@ const VideoStatus: React.FC<VideoStatusProps> = ({ video }) => {
   if (video.status === "watched") color = "green";
   else if (video.status === "in-progress") color = "yellow";
 
+  console.log("videoData:", video);
+
   return (
     <div
       style={{

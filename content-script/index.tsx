@@ -47,7 +47,7 @@ function injectCourseStatus() {
 
     const container = document.createElement("div");
     container.id = `course-status-${courseId}`;
-    courseDiv.appendChild(container);
+    courseDiv.parentElement?.append(container);
 
     ReactDOM.createRoot(container).render(
       <React.StrictMode>
