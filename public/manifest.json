@@ -10,7 +10,13 @@
   "optional_permissions": ["<all_urls>"],
   "content_scripts": [
     {
-      "matches": ["https://schoolism.com/*"],
+      "matches": ["https://schoolism.com/s/course/library"],
+      "run_at": "document_end",
+      "js": ["./index.global.js"],
+      "css": ["./style.css"]
+    },
+    {
+      "matches": ["https://schoolism.com/s/course/library/lessons/*"],
       "run_at": "document_end",
       "js": ["./index.global.js"],
       "css": ["./style.css"]

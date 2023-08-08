@@ -36,7 +36,7 @@ function onLoad() {
   } else if (currentURL.includes("schoolism.com/s/course/library")) {
     console.log("in course catalog");
 
-    const courseDivs = document.querySelectorAll(".li course-card");
+    const courseDivs = document.querySelectorAll(".course-card");
 
     console.log("courseDivs", courseDivs);
 
