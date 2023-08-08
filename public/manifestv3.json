@@ -9,21 +9,19 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://blank.org/*"
-      ],
+      "matches": ["https://schoolism.com/s/course/library"],
       "run_at": "document_end",
-      "js": [
-        "./index.global.js"
-      ],
-      "css": [
-        "./style.css"
-      ]
+      "js": ["./index.global.js"],
+      "css": ["./style.css"]
+    },
+    {
+      "matches": ["https://schoolism.com/s/course/library/lessons/*"],
+      "run_at": "document_end",
+      "js": ["./index.global.js"],
+      "css": ["./style.css"]
     }
   ],
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "background": {
     "service_worker": "./background.global.js"
   },
